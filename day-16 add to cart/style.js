@@ -8,7 +8,7 @@ let total = document.querySelector("#total")
 
 
 let cart = []
- let data =[
+let data = [
   {
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -255,30 +255,84 @@ let cart = []
 
 
 
-function addToCart(id){
+function addToCart(id) {
+  let isExits = cart.some((ele) => ele.id == id)
+  if (isExits) {
+    window.alert("Item Already Exits in Cart 🛒")
+  } else {
     let obj = data.find((el) => el.id == id)
+    obj.qtn = 1;
     cart.push(obj)
-    console.log(cart)
-    cartLenghth.textContent = cart.length;
-
     showCart(cart)
-    let sum = 0;
-    cart.forEach((el)=>{
-        sum = sum + el.price
-    })  
-
-     total.textContent = sum
+  }
 }
 
 
 
-function showCart(arr)
+function showTotal(cart) {
+
+  let sum = 0;
+  cart.forEach((el) => {
+    sum = sum + el.price*el.qtn
+  })
+
+  total.textContent = sum
+
+}
+
+
+function removecart(id) {
+  cart = cart.filter((ele) => ele.id != id)
+  showCart(cart)
+}
+
+function decount(id)
 {
-    cartrow.innerHTML = ""
-    arr.map((ele) =>
-    {
-        cartrow.innerHTML += 
-        `
+  cart = cart.map((ele) =>{
+  if(ele.id == id)
+  {
+    ele.qtn = ele.qtn-1
+  }
+  return ele
+})
+  cart = cart.filter((ele) =>{
+    if(ele.qtn >= 1){
+      return ele
+    }
+  })
+
+  showCart( cart)
+  console.log(cart)
+
+}
+
+function incount(id)
+{
+  cart = cart.map((ele) =>{
+  if(ele.id == id)
+  {
+    ele.qtn = ele.qtn+1
+  }
+  return ele
+})
+ 
+
+  showCart( cart)
+  console.log(cart)
+
+}
+
+
+
+
+
+function showCart(arr) {
+  cartrow.innerHTML = ""
+  cartLenghth.textContent = arr.length;
+  showTotal(arr)
+  arr.map((ele) => {
+    cartrow.innerHTML +=
+      `
          <div class="col-12">
                 <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -294,30 +348,32 @@ function showCart(arr)
                          </div>
                             <h5 class="card-title">${ele.title}</h5>
                             <p class="card-text">${ele.category}</p>
-                           <div class="btn-group " role="group" aria-label="basic mixed styles example">
-                           <button type="button" class="btn btn-danger btn-sm">-</button>
-                           <button type="button" class="btn  btn-sm">0</button>
-                           <button type="button" class="btn btn-success btn-sm">+</button>
+
+                         <div class="d-flex align-items-center justify-content-between">
+                          <div class="btn-group " role="group" aria-label="basic mixed styles example">
+                           <button onClick="decount(${ele.id})" type="button" class="btn btn-danger btn-sm">-</button>
+                           <button type="button" class="btn  btn-sm">${ele.qtn}</button>
+                           <button  onClick="incount(${ele.id})" type="button" class="btn btn-success btn-sm">+</button>
                         </div>
+                          <button onclick="removecart(${ele.id})" class="btn p-1 rounded-circle "><i class="bi bi-trash"></i></button>
+                         </div>    
                     </div>
                 </div>
             </div>
         </div>
         </div>
         `
-    })
+  })
 }
 
 
 
 
-function showData(arr)
-{
-    arr.map((ele) =>
-    {
-        
-        row.innerHTML +=    
-        `
+function showData(arr) {
+  arr.map((ele) => {
+
+    row.innerHTML +=
+      `
          <div class="col-lg-3">
                     <div class="card h-100 p-2">
                         <img src=${ele.image} class="card-img-top img-thumbnail" style="height:200px" alt="...">
@@ -335,7 +391,7 @@ function showData(arr)
                     </div>
                 </div>
         `
-    })
+  })
 }
 
 
