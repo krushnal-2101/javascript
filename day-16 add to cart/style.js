@@ -7,7 +7,7 @@ let total = document.querySelector("#total")
 
 
 
-let cart = []
+let cart = JSON.parse(localStorage.getItem("cart")) || []
 let data = [
   {
     "id": 1,
@@ -66,7 +66,7 @@ let data = [
     "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
     "rating": {
       "rate": 4.6,
-      "count": 400
+      "count": 10
     }
   },
   {
@@ -251,9 +251,17 @@ let data = [
   }
 ]
 
+function setLocal(cart)
+{
+    localStorage.setItem("cart", JSON.stringify(cart))
+    getLocal()
+}
 
-
-
+function getLocal()
+{         
+  let newcart = JSON.parse(localStorage.getItem("cart")) || []
+  showCart(newcart)
+}
 
 function addToCart(id) {
   let isExits = cart.some((ele) => ele.id == id)
@@ -263,7 +271,7 @@ function addToCart(id) {
     let obj = data.find((el) => el.id == id)
     obj.qtn = 1;
     cart.push(obj)
-    showCart(cart)
+    setLocal(cart)
   }
 }
 
@@ -283,7 +291,7 @@ function showTotal(cart) {
 
 function removecart(id) {
   cart = cart.filter((ele) => ele.id != id)
-  showCart(cart)
+   setLocal(cart)
 }
 
 function decount(id)
@@ -301,25 +309,26 @@ function decount(id)
     }
   })
 
-  showCart( cart)
-  console.log(cart)
-
-}
-
-function incount(id)
-{
-  cart = cart.map((ele) =>{
-  if(ele.id == id)
-  {
-    ele.qtn = ele.qtn+1
-  }
-  return ele
-})
+  setLocal(cart)
  
 
-  showCart( cart)
-  console.log(cart)
+}       
 
+function incount(id){
+
+  let obj = cart.find((ele)=> ele.id == id)
+
+ if(obj.rating.count<=obj.qtn){
+    window.alert("out of Stock...!")
+ }else{
+   cart = cart.map((ele) => {
+     if(ele.id == id){
+       ele.qtn = ele.qtn+1;
+     }
+     return ele;
+   })
+   setLocal(cart)
+ }
 }
 
 
@@ -366,6 +375,7 @@ function showCart(arr) {
   })
 }
 
+showCart(cart)
 
 
 
@@ -378,12 +388,11 @@ function showData(arr) {
                     <div class="card h-100 p-2">
                         <img src=${ele.image} class="card-img-top img-thumbnail" style="height:200px" alt="...">
                         <div class="card-body">
+                        LEFT<span class="badge border text-info">${ele.rating.count}</span>
                         <div class="d-flex justify-content-between">
                            <span class="badge text-bg-light">$ ${ele.price} /-</span>
                             <span class="badge text-bg-warning"> ${ele.rating.rate}</span>
                         </div>
-                
-                     
                             <h5 class="card-title">${ele.title}</h5>
                             <p class="card-text">${ele.category}</p>
                             <button onclick="addToCart(${ele.id})" class="btn btn-success btn-sm">Add to Cart</button>
