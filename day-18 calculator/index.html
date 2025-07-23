@@ -11,71 +11,70 @@
     <div class="container ">
         <div class="calculater mt-5  ">
             <div class="border bg-black w-50 m-auto p-5">
-                <input type="text" readonly="" class="w-100 mb-3 p-3 rounded">
+                <input type="text" readonly="" class="w-100 mb-3 p-3 rounded" id="display">
                 <div class="row ">
                     <div class="col-3 ">
-                         <button class="rounded-pill px-4 py-3  bg-secondary text-light btn" >AC</button>
+                         <button class="rounded-pill px-4 py-3  bg-secondary text-light btn"  onclick="clearDisplay()" >AC</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn" >+/-</button>
+                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn" onclick="deleteLast()">DEL</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn" >%</button>
+                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn" onclick="percentage()">%</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn" >/</button>
+                         <button class="rounded-pill px-4 py-3 bg-secondary text-light btn"  onclick="append('/')">/</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 mt-3 bg-secondary text-light btn" >7</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 mt-3 bg-secondary text-light btn"  onclick="append('7')">7</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >8</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('8')" >8</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >9</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('9')">9</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn ">*</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn "  onclick="append('*')">*</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >4</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('4')">4</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >5</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" onclick="append('5')">5</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >6</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('6')">6</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >-</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" onclick="append('-')">-</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >1</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('1')">1</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  >2</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" onclick="append('2')">2</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >3</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"onclick="append('3')" >3</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >+</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"  onclick="append('+')">+</button>
                     </div>
                     <div class="col-6">
-                         <button class="rounded-pill  w-4 mt-3 bg-secondary text-light btn" style="padding: 15px 100px 15px 100px;" >0</button>
+                         <button class="rounded-pill  w-4 mt-3 bg-secondary text-light btn" onclick="append('0')" style="padding: 15px 100px 15px 100px;" >0</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >.</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" onclick="append('.')" >.</button>
                     </div>
                     <div class="col-3">
-                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn" >=</button>
+                         <button class="rounded-pill px-4 py-3 mt-3 bg-secondary text-light btn"onclick="calculate('=')" >=</button>
                     </div>
-                </div>
-               
-                
+                </div> 
             </div>
         </div>
     </div>
 
 </body>
+<script src="style.js"></script>
 </html>
