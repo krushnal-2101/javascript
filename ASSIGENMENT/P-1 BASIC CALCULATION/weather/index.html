@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body class="p-5 bg-dark" >
+<br><br><br><br><br><br><br><br><br>
+<div class="border w-25 p-5 rounded mx-auto " style="background-color: rgb(93, 150, 150);">
+  <h1 class="mb-4 border-bottom text-center"><i class="bi bi-cloud-moon pe-3"></i>Weather Info</h1>
+  <input  type="text" id="cityInput" placeholder="Enter city name" style="background: #d3fff5; padding: 10px;"/>
+  <button onclick="getWeather()" class="mx-3 bg-dark text-light p-2">Get Weather</button>   
+  <div id="weatherResult"></div>
+</div>    
+
+
+
+
+
+  
+  <script>
+    const apiKey = '8318f7392d1b76ca330fa4ced309b0b1'; // Replace with your OpenWeather API key
+
+    function getWeather() {
+      const city = document.getElementById('cityInput').value;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.cod === 200) {
+            const weatherInfo = `
+              <p><strong>City:</strong> ${data.name}</p>
+              <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+              <p><strong>Condition:</strong> ${data.weather[0].description}</p>
+            `;
+            document.getElementById('weatherResult').innerHTML = weatherInfo;
+          } else {
+            document.getElementById('weatherResult').innerHTML = `<p>${data.message}</p>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('weatherResult').innerHTML = '<p>Failed to fetch weather data.</p>';
+        });
+    }
+  </script>
+</body>
