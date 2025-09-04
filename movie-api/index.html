@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIE</title>
+   <script src="style.js"></script>
+</head>
+
+<style>
+    body{
+        background-color: black;
+    }
+    #movies
+    {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 200px;  
+        width: 200px;
+    }
+</style>
+
+<body>
+
+    <h1 style="color:rgb(151, 224, 224)">Movies Search App</h1>
+
+    <input type="text" placeholder="Enter Movie Name" id="search"/>
+
+    <button onclick="searchMovies()">SEARCH</button>
+
+    <div id="movies"></div>
+
+</body>
+</html>
