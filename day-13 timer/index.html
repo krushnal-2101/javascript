@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>timer clock</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
 
 <style>   
@@ -57,27 +56,27 @@
 <body>
     <div class="container">
         <button class="btn btn-dark">COUNT- <span class="badge text-bg-light counter">1</span></button>
-        <button class="btn btn-sm-info stop m-3 bg-light border">STOP</button>
+        <button class="btn btn-sm-info stop m-3 bg-light border ">STOP</button>
     </div>
 
     <div class="container my-5 border p-5 bg-light">
         <div class="shadow p-2 d-flex gap-1 m-auto " style="width:200px;">
             <div class="rounded p-2 m-1 px-2 shadow border hour">02</div>
             <div class="rounded p-2 m-1 px-2 shadow border minute">02</div>
-            <div class="rounded p-2 m-1 px-2 shadow border hour">24</div>
+            <div class="rounded p-2 m-1 px-2 shadow border second">24</div>
         </div>
     </div>
 
     <div class="container my p-5 ">
         <div class="d-flex gap-2 ">
-            <input type="number" placeholder="Enter Time" class="form-control form-control-sm timenumber"> <button
-                class="btn btn-sm btn-info start" onclick="startTimer()">Start</button>
+            <input type="number" placeholder="Enter Time" class="form-control form-control-sm timenumber">
+             <button class="btn btn-sm btn-info start" onclick="startTimer()">Start</button>
         </div>
 
         <img src="https://media.istockphoto.com/id/931336618/vector/clock-vector-icon-isolated.jpg?s=612x612&w=0&k=20&c=I8EBJl8i6olqcrhAtKko74ydFEVbfCQ6s5Pbsx6vfas="
             alt="" style="width: 300px;  " class="m-5" id="clock">
 
-        <audio id="aud" src="audio.mp3"></audio>
+        <audio id="aud" src="alarm.mp3"></audio>
     </div>
 
 </body>

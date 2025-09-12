@@ -44,7 +44,7 @@ setInterval(function()
 
 
 
-let timenumber = document.querySelector("timenumber")
+let timenumber = document.querySelector(".timenumber")
 let aud = document.querySelector("#aud")
 let clock = document.querySelector("#clock")
 
